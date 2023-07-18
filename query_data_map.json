@@ -1,0 +1,20 @@
+{
+  "1": [
+    "movies"
+  ],
+  "2": [
+    "movies",
+    "ratings"
+  ],
+  "3": [
+    "movies",
+    "movie_genres"
+  ],
+  "4": [
+    "movies",
+    "movie_genres"
+  ],
+  "5": [
+    "movies"
+  ]
+}

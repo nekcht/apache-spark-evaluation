@@ -1,0 +1,4 @@
+{
+  "local_datasets_path": "../datasets",
+  "hdfs_datasets_path": "hdfs:///datasets"
+}

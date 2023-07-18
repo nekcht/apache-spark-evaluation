@@ -3,12 +3,11 @@
 
 
 """
-The Printer class defines all the printing functions for each query, taking into account both RDD and DataFrame
-data structures. Each query has a separate printing function for RDD and DataFrame. If you need to add a new
-printing function for your query, make sure to define it for both RDD and DataFrame, and then update the printer_map
-dictionary accordingly. This approach ensures consistency and allows for easy extension of printing functionality for
-new queries.
+If you need to add a new printing function for your query, make sure to define it for both RDD and DataFrame,
+and then update the printer_map dictionary accordingly. This approach ensures consistency and allows for easy
+extension of printing functionality for new queries.
 """
+
 
 # standard library imports
 from abc import ABC, abstractmethod
@@ -75,6 +74,7 @@ class Printer(ABC):
         printer(data)
 
         return None
+
 
 class RddPrinter(Printer):
     """

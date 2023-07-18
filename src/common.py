@@ -53,7 +53,7 @@ def update_json(json_file, entry_tuple):
 
     # Check if new entry already exists in the JSON data
     if key in data:
-        print("Entry already exists. Update failed.")
+        print("Entry already exists. Update failed. If this persists reset .json files to their original state.")
         return
 
     # Append the new entry to the JSON data

@@ -1,10 +1,10 @@
-# object_factory.py
+# data_loader.py
 # Christou Nektarios - Big Data Management 2022-2023 NKUA
 
 
 """
 If you want to add datasets for a new query, you have to add a new entry
-in query_data_map.json and schemas.py, assuming that the datasets are
+in query_data_map.json and schemas.py, assuming that the required files are
 already stored in HDFS:///datasets/<dataset>/csv/<csv_name>.csv for CSV files
 and HDFS:///datasets/<dataset>/parquet/<csv_name> for Parquet files.
 """

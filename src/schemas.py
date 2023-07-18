@@ -8,7 +8,9 @@ First define the schema, then add a new entry in schema_map.
 Key should be the name of the dataset and value the schema.
 """
 
+
 from pyspark.sql.types import *
+
 
 # schema for the movie dataset
 moviesSchema = StructType([
@@ -48,6 +50,7 @@ departmentSchema = StructType([
     StructField("department_id", IntegerType(), nullable=False),
     StructField("name", StringType(), nullable=False),
 ])
+
 
 """
  A mapping of datasets to their corresponding schema.

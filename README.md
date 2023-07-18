@@ -50,7 +50,11 @@ spark-submit benchmark.py -f query -file <file_format> -struct <data_struct> -id
 ```
 
 <file_format> (str): The file format of the data (CSV or Parquet).
+
 <data_struct> (str): The data structure to use (RDD or DataFrame).
+
 <index_query> (int): The index of the query to execute.
+
 <your_dataset_name> (str): The name of the dataset stored in /datasets (e.g. 'my_dataset').
+
 verbose (int): Whether to print query results (1 for True, 0 for False).

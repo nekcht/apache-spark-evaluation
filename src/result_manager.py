@@ -3,7 +3,7 @@
 
 
 """
-This module is optional and provides additional functionality
+This module is optional and can be enriched with additional functionality.
 """
 
 

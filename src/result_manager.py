@@ -1,10 +1,11 @@
-# query_processor.py
+# result_manager.py
 # Christou Nektarios - Big Data Management 2022-2023 NKUA
 
 
 """
-..
+This module is optional and provides additional functionality
 """
+
 
 # pySpark library imports
 from pyspark.sql import SparkSession

@@ -9,7 +9,6 @@ SparkSession objects as input to initialize the classes.
 """
 
 
-# pySpark library imports
 # local module imports
 from data_loader import DataLoader
 from query_executor import QueryExecutor, RddQueryExecutor, DfQueryExecutor
@@ -29,6 +28,7 @@ class ObjectFactory:
         spark (pyspark.sql.SparkSession): The SparkSession object.
 
     """
+    
     def __init__(self, sc, spark):
         self.sc = sc
         self.spark = spark

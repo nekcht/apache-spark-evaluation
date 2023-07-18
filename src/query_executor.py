@@ -3,10 +3,11 @@
 
 
 """
-All transformations for all available queries are defined here. For each
-query, there's an implementation in RddQueryExecutor and in DfQueryExecutor.
-If you wish to add your own methods for a query, make sure you update the transform_map dict.
+All transformations for all available queries are defined here. For each query, there's an 
+implementation in RddQueryExecutor and in DfQueryExecutor. If you wish to add your own methods
+for a query, make sure you update the transform_map dict.
 """
+
 
 # standard library imports
 import time

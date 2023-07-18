@@ -3,11 +3,8 @@
 
 
 """
-This script is the main entry point of the Spark Data Structure Performance Evaluator.
-It handles command-line arguments, initializes the Spark session, and executes the specified function.
-The functions implemented in this script include HDFS setup, saving data in CSV format, saving data in
-Parquet format, retrieving execution times, performing different join operations, executing custom queries,
-and executing a specific query based on the provided arguments.
+This script is the main entry point of the Spark Data Structure Performance Evaluator. It handles command-line arguments,
+initializes the Spark session, and executes the specified function based on the provided arguments.
 """
 
 
@@ -20,7 +17,6 @@ from object_factory import ObjectFactory
 from schemas import get_schema
 from common import get_json, update_json, hdfs_setup, save_csv, save_parquet, get_execution_times
 from printer import Printer, RddPrinter, DfPrinter
-from joins import broadcast_join, repartition_join, custom_query
 from query_executor import QueryExecutor, RddQueryExecutor, DfQueryExecutor
 
 
@@ -56,16 +52,6 @@ def main():
             save_parquet(spark, dataset)
         elif function_name == 'get_execution_times':
             get_execution_times()
-        elif function_name == 'broadcast_join':
-            dataset = args.dataset
-            broadcast_join(dataset, 'employeesR', 'departmentsR', sc)
-        elif function_name == 'repartition_join':
-            dataset = args.dataset
-            repartition_join(dataset, 'employeesR', 'departmentsR', sc)
-        elif function_name == 'custom_query':
-            dataset = args.dataset
-            custom_query(dataset, 'N', 'autoBroadcastJoinThreshold', 104857600, spark)
-            custom_query(dataset, 'Y', 'autoBroadcastJoinThreshold', -1, spark)
         elif function_name == 'query':
             # Retrieve arguments
             file_format = args.file_format
@@ -79,6 +65,7 @@ def main():
 
     # End of Spark Session
     spark.stop()
+
 
 def query(sc, spark, file_format, data_structure, idx_query, dataset, verbose):
     """

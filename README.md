@@ -16,7 +16,7 @@ This is a simple Python-based system designed, for educational purposes, to eval
 3. The system measures and records the execution time for each query, providing insights into the performance differences between RDD and DataFrame data structures.
 4. The results are presented, allowing users to analyze the performance impact of different data structures and file formats.
 
-This implementation includes 5 pre-defined queries for this dataset: https://www.dropbox.com/s/c10t67glk60wpha/datasets2023.tar.gz?dl=0. The queries can be found in query_executor.py. To test them, download the .tar file from the url and store it in '/datasets/my_dataset.tar'. Then proceed to Steps 3 -> 4 -> 5 -> 9.
+This implementation includes 5 pre-defined queries for this dataset: https://www.dropbox.com/s/c10t67glk60wpha/datasets2023.tar.gz?dl=0. The queries can be found in query_executor.py. To test them, download the .tar file from the url and store it in '/datasets/my_dataset.tar'. Then proceed directly to Steps 3 -> 4 -> 5 -> 9.
 
 ## Usage
 Step 1 - Save your dataset (.tar) in the ./datasets directory.

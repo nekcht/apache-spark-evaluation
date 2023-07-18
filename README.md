@@ -42,7 +42,7 @@ Step 7 - Define a new function for your query in query_executor.py. If you want 
 
 Step 8 - (OPTIONAL) Define your custom printing function in printer.py. Do so for both RddPrinter and DfPrinter (update self.printer_map accordingly).
 
-Step 9 - Run your query
+Step 9 - Run your query (file_format = csv or parquet) (data_struct = rdd or df)
 ```bash
-spark-submit benchmark.py -f query -file csv -struct rdd -idx_q <index_query> -data <your_dataset_name> -v 1
+spark-submit benchmark.py -f query -file <file_format> -struct <data_struct> -idx_q <index_query> -data <your_dataset_name> -v 1
 ```

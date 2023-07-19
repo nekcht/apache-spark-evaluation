@@ -15,10 +15,8 @@ When you try to execute a query, the system typically works like this:
 2. The loaded data is passed to the query_executor.py class, which executes the designated query based on the user's choice of data structure (RDD or DataFrame).
 3. The system measures and records the execution time for each query, providing insights into the performance differences between RDD and DataFrame data structures.
 
-This implementation includes 5 pre-defined queries for this dataset: https://www.dropbox.com/s/c10t67glk60wpha/datasets2023.tar.gz?dl=0.
-
 ## Dataset
-The current implementation contains 5 pre-defined queries for the mentioned dataset.
+You can find the dataset here: https://www.dropbox.com/s/c10t67glk60wpha/datasets2023.tar.gz?dl=0.
 
 The dataset contains the following cvs's:
 1. movies.csv (id, name, description, release_year, duration, cost, revenue, popularity)
@@ -27,33 +25,36 @@ The dataset contains the following cvs's:
 4. employeesR.csv (employee_id, name, department_id)
 5. departmentsR.csv (department_id, name)
 
+The current implementation contains 5 pre-defined queries.
+
 ## Usage
 Follow these steps:
-1. Open a terminal window and navigate to './src'. Then download the dataset:
+1. Open a terminal window and navigate to './src'.
+2. Download the dataset:
 ```bash
 wget -O ../datasets/project2023.tar https://www.dropbox.com/s/c10t67glk60wpha/project2023.tar.gz?dl=0
 ```
 
-2. Prepare HDFS:
+3. Prepare HDFS:
+```bash
+spark-submit benchmark.py -f hdfs_setup -data project2023
+```
+
+4. Extract dataset and store csv's in HDFS:
 ```bash
 spark-submit benchmark.py -f save_csv -data project2023
 ```
 
-3. Extract dataset and store csv's in HDFS:
-```bash
-spark-submit benchmark.py -f save_csv -data project2023
-```
-
-4. Convert csv's to parquet and store iN HDFS:
+5. Convert csv's to parquet and store iN HDFS:
 ```bash
 spark-submit benchmark.py -f save_parquet -data project2023
 ```
 
-5. Run a query. The following command saves the result in '../output' dir:
+6. Run a query. The following command saves the result in '../output' dir:
 ```bash
 spark-submit benchmark.py -f query -file csv -struct rdd -idx_q 1 -data project2023 -v 1 > ../output/result.txt
 ```
-If instead you want to print the results in terminal, run this command:
+If you want to print the results in terminal run this command instead:
 ```bash
 spark-submit benchmark.py -f query -file csv -struct rdd -idx_q 1 -data project2023 -v 1
 ```

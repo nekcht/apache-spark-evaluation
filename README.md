@@ -15,65 +15,55 @@ When you try to execute a query, the system typically works like this:
 2. The loaded data is passed to the query_executor.py class, which executes the designated query based on the user's choice of data structure (RDD or DataFrame).
 3. The system measures and records the execution time for each query, providing insights into the performance differences between RDD and DataFrame data structures.
 
-This implementation includes 5 pre-defined queries for this dataset: https://www.dropbox.com/s/c10t67glk60wpha/datasets2023.tar.gz?dl=0. The queries can be found in query_executor.py. To test them, download the .tar file from the url and store it in '/datasets/my_dataset.tar'. Then proceed directly to Steps 3 -> 4 -> 5 -> 9.
+This implementation includes 5 pre-defined queries for this dataset: https://www.dropbox.com/s/c10t67glk60wpha/datasets2023.tar.gz?dl=0.
 
-## How to
-* How to define my own queries (transformations) on a new dataset?
-> Compress your csv's (.tar file) and store it in '/datasets' dir. Then, define your own transformations function in query_executor.py.
-If you want to use both RDD and DataFrame structures you must define a function in each subclass of QueryExecutor. Also, don't forget
-to update the 'transform_map' dictionary in QueryExecutor class accordingly. The default implementation contains 5 queries defined as
-> 'query_1', 'query_2'...etc. This means that you first new query would be 'def query_6()'. Lastly, update query_data_map.json accordingly.
+## Dataset
+The current implementation contains 5 pre-defined queries for the mentioned dataset.
 
-* How to use a new dataset for my queries?
-> As mentioned, compress your csv's (.tar file) and store it in '/datasets' dir. Then, just proceed to Steps 3 -> 4 -> 5.
-
-* How to define my custom printing function?
-> Define your own printing function in printer.py. As before, if you want to define different printing functions for RDD and DF, you should
-do so in both subclasses of Printer class. The default implementation contains one printing function for each query as 'print_query_1',
-'print_query_2'...etc. Also, update the attribute 'printer_map' in Printer class accordingly.
-
-* How to define my own schemas for my new dataset?
-> Define your own schemas in schemas.py. Update schema_map dictionary accordingly.
-
+The dataset contains the following cvs's:
+1. movies.csv (id, name, description, release_year, duration, cost, revenue, popularity)
+2. ratings.csv (id, movie_id, rating, timestamp)
+3. movie_genres.csv (movie_id, genre)
+4. employeesR.csv (employee_id, name, department_id)
+5. departmentsR.csv (department_id, name)
 
 ## Usage
-Step 1 - Save your dataset (.tar) in the ./datasets directory.
-
-Step 2 - Define the necessary schemas for each CSV file in schemas.py and update the schema_map dictionary (the key should be the name of each CSV file).
-
-Step 3 - Run the following command to create the necessary folders in HDFS. Replace <your_dataset_name> with the name of the .tar file in ./datasets without the extension.
+Follow these steps:
+1. Open a terminal window and navigate to './src'. Then download the dataset:
 ```bash
-spark-submit benchmark.py -f hdfs_setup -data <your_dataset_name>
+wget -O ../datasets/project2023.tar https://www.dropbox.com/s/c10t67glk60wpha/project2023.tar.gz?dl=0
 ```
 
-Step 4 - Store your dataset in HDFS:
+2. Prepare HDFS:
 ```bash
-spark-submit benchmark.py -f save_csv -data <your_dataset_name>
+spark-submit benchmark.py -f save_csv -data project2023
 ```
 
-Step 5 - Convert and store your dataset as Parquet in HDFS:
+3. Extract dataset and store csv's in HDFS:
 ```bash
-spark-submit benchmark.py -f save_parquet -data <your_dataset_name>
+spark-submit benchmark.py -f save_csv -data project2023
 ```
 
-Step 6 - Update query_data_map.json accordingly. The key is the query index, and the value is a list with the names of the CSV files that the query needs.
-
-Step 7 - Define a new function for your query in query_executor.py. If you want your query to be available for both RDD and DataFrame, define a new function in both the RddQueryExecutor and DfQueryExecutor classes (update self.transform_map accordingly).
-
-Step 8 - (OPTIONAL) Define your custom printing function in printer.py. Do so for both RddPrinter and DfPrinter. Update self.printer_map accordingly.
-
-Step 9 - Run your query:
+4. Convert csv's to parquet and store iN HDFS:
 ```bash
-spark-submit benchmark.py -f query -file <file_format> -struct <data_struct> -idx_q <index_query> -data <your_dataset_name> -v 1
+spark-submit benchmark.py -f save_parquet -data project2023
 ```
-If you wish to save the results in a .txt file in '/output' use:
+
+5. Run a query. The following command saves the result in '../output' dir:
 ```bash
-spark-submit benchmark.py -f query -file <file_format> -struct <data_struct> -idx_q <index_query> -data <your_dataset_name> -v 1 > ../output/result.txt
+spark-submit benchmark.py -f query -file csv -struct rdd -idx_q 1 -data project2023 -v 1 > ../output/result.txt
 ```
-- <file_format> (str): The file format of the data (CSV or Parquet).
+If instead you want to print the results in terminal, run this command:
+```bash
+spark-submit benchmark.py -f query -file csv -struct rdd -idx_q 1 -data project2023 -v 1
+```
 
-- <data_struct> (str): The data structure to use (RDD or DataFrame).
+## How to
+* How to define my own queries (transformations) for a new dataset?
+1. > Compress your csv's in a .tar file and store it in '/datasets' dir.
+2. > Define a schema for each csv in schemas.py. Update schema_map dictionary.
+3. > Define your transformations methods (e.g. query_6, query_7...etc) in query_executor.py in the parent class and it's subclasses. Update transform_map dictionary.
+4. > Update query_data_map.json. The key is your query index (e.g. 6, 7..) and the value is a list with the csv's that the query requires.
+5. > Define your custom printing function in printer.py in the parent class and it's subclasses. Update printer_map dictionary.
+6. > You're set to go! Now follow steps 2 to 5 in "Usage", but this time instead of "project2023" use the name of your dataset (.tar) file.
 
-- <index_query> (int): The index of the query to execute.
-
-- <your_dataset_name> (str): The name of the dataset stored in /datasets (e.g. 'my_dataset').

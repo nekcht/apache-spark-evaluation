@@ -1,6 +1,6 @@
 # Spark Data Structure Performance Evaluator
 
-This is a simple Python-based system designed, for educational purposes, to evaluate the execution time differences between RDD (Resilient Distributed Datasets) and DataFrame data structures in Apache Spark. It also takes into account the file format being used, such as CSV or Parquet.
+This educational project, carried out for the Μ111 - Big Data Management course at NKUA during Spring 2023, focuses on comparing the execution times of RDD (Resilient Distributed Datasets) and DataFrame data structures in Apache Spark. By executing a designated query based on user input, either RDD or DataFrame is utilized, along with either CSV or Parquet data formats.
 
 ## Requirements
 

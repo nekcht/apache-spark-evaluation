@@ -66,5 +66,5 @@ spark-submit benchmark.py -f query -file csv -struct rdd -idx_q 1 -data project2
 3. > Define your transformations methods (e.g. query_6, query_7...etc) in query_executor.py in the parent class and it's subclasses. Update transform_map dictionary.
 4. > Update query_data_map.json. The key is your query index (e.g. 6, 7..) and the value is a list with the csv's that the query requires.
 5. > Define your custom printing function in printer.py in the parent class and it's subclasses. Update printer_map dictionary.
-6. > You're set to go! Now follow steps 2 to 5 in "Usage", but this time instead of "project2023" use the name of your dataset (.tar) file.
+6. > You're set to go! Now follow steps 3 to 6 in "Usage", but this time instead of "project2023" use the name of your dataset (.tar) file.
 

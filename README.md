@@ -9,7 +9,7 @@ This is a simple Python-based system designed, for educational purposes, to eval
 - Apache Spark 2.4.4
 - Python 3.5.2
 
-## Description
+## Workflow
 When you try to execute a query, the system typically works like this:
 1. Data is fetched from the Hadoop Distributed File System (HDFS) using the data_loader.py class, considering the specified file format (CSV or Parquet).
 2. The loaded data is passed to the query_executor.py class, which executes the designated query based on the user's choice of data structure (RDD or DataFrame).

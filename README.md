@@ -28,7 +28,7 @@ The dataset contains the following cvs's:
 The current implementation contains 5 pre-defined queries.
 
 ## Usage
-Follow these steps:
+Assuming Apache Hadoop and Spark are running properly on the target system, follow these steps:
 1. Open a terminal window and navigate to './src'.
 2. Download the dataset:
 ```bash

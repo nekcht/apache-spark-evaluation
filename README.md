@@ -60,11 +60,25 @@ spark-submit benchmark.py -f query -file csv -struct rdd -idx_q 1 -data project2
 ```
 
 ## How to
-### How to define my own queries (transformations) for a new dataset?
+#### How to define my own queries (transformations) for a new dataset?
 1. Compress your CSVs in a .tar file and store it in `'/datasets'` dir.
 2. Define a schema for each CSV in `schemas.py`. Update `schema_map` dictionary.
 3. Define your transformations methods (e.g. `query_6`, `query_7`, etc) in `query_executor.py` within the parent class and its subclasses. Update `transform_map` dictionary.
 4. Update `query_data_map.json`. The key is your query index (e.g. 6, 7..) and the value is a list of CSVs that the query requires.
 5. Define your custom printing function in `printer.py` within the parent class and its subclasses. Update `printer_map` dictionary.
 6. You're all set! Follow steps 3 to 6 in **"Usage"**, but this time, instead of "project2023" use the name of your dataset (.tar) file.
+
+## Insights
+<p align="justify">
+Experimentation with Dataframes, RDDs, and two file types—CSV and Parquet—reveals insights into their operational efficacies. For smaller datasets, we observed negligible performance differences between Dataframes and RDDs, and likewise between CSV and Parquet file formats. Their unique attributes and efficiencies didn't manifest in a significant way with lower volumes of data.</p>
+<p align="center">
+  <img src="figure.png" />
+</p>
+<p align="justify">
+However, when we scaled up to larger datasets, as evidenced in the second query, the story dramatically changed. Both Dataframes and, to a greater extent, the Parquet file type showcased remarkable efficiency enhancements. This stark contrast underscores the true value of Dataframes and Parquet files in the realm of Big Data.
+Their strength lies not in handling day-to-day, smaller data tasks, but in managing and processing vast datasets where their optimized structures come to the fore. This conclusion underscores the importance of adopting Dataframes and Parquet for data-intensive tasks. Their significant contribution to execution efficiency when handling larger datasets validates their utility in Big Data contexts.</p>
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 

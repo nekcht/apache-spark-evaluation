@@ -1,6 +1,6 @@
 # Apache Spark Data Structure Performance Evaluator
-
-This educational project, carried out for the Μ111 - Big Data Management course at NKUA during Spring 2023, focuses on comparing the execution times of RDD (Resilient Distributed Datasets) and DataFrame data structures in Apache Spark. By executing a designated query based on user input, either RDD or DataFrame is utilized, along with either CSV or Parquet data formats.
+<p align='justify'>
+This educational project, carried out for the Μ111 - Big Data Management course at NKUA during Spring 2023, focuses on comparing the execution times of RDD (Resilient Distributed Datasets) and DataFrame data structures in Apache Spark. By executing a designated query based on user input, either RDD or DataFrame is utilized, along with either CSV or Parquet data formats.</p>
 
 ## Requirements
 
@@ -60,11 +60,11 @@ spark-submit benchmark.py -f query -file csv -struct rdd -idx_q 1 -data project2
 ```
 
 ## How to
-* How to define my own queries (transformations) for a new dataset?
-1. > Compress your CSVs in a .tar file and store it in `'/datasets'` dir.
-2. > Define a schema for each CSV in `schemas.py`. Update `schema_map` dictionary.
-3. > Define your transformations methods (e.g. `query_6`, `query_7`, etc) in `query_executor.py` within the parent class and its subclasses. Update `transform_map` dictionary.
-4. > Update `query_data_map.json`. The key is your query index (e.g. 6, 7..) and the value is a list of CSVs that the query requires.
-5. > Define your custom printing function in `printer.py` within the parent class and its subclasses. Update `printer_map` dictionary.
-6. > You're all set! Follow steps 3 to 6 in **"Usage"**, but this time, instead of "project2023" use the name of your dataset (.tar) file.
+### How to define my own queries (transformations) for a new dataset?
+1. Compress your CSVs in a .tar file and store it in `'/datasets'` dir.
+2. Define a schema for each CSV in `schemas.py`. Update `schema_map` dictionary.
+3. Define your transformations methods (e.g. `query_6`, `query_7`, etc) in `query_executor.py` within the parent class and its subclasses. Update `transform_map` dictionary.
+4. Update `query_data_map.json`. The key is your query index (e.g. 6, 7..) and the value is a list of CSVs that the query requires.
+5. Define your custom printing function in `printer.py` within the parent class and its subclasses. Update `printer_map` dictionary.
+6. You're all set! Follow steps 3 to 6 in **"Usage"**, but this time, instead of "project2023" use the name of your dataset (.tar) file.
 
